@@ -11,9 +11,8 @@ const PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-const __dirname = path.resolve();
-const uploadsDir = path.join(__dirname, "uploads");
-const tempDir = path.join(__dirname, "temp");
+const uploadsDir = path.join("/tmp", "uploads");
+const tempDir = path.join("/tmp", "temp");
 
 fs.mkdirSync(uploadsDir, { recursive: true });
 fs.mkdirSync(tempDir, { recursive: true });
@@ -117,5 +116,5 @@ app.use((req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Resumable upload server listening on http://localhost:${PORT}`);
+  console.log(`Server listening on http://localhost:${PORT}`);
 });
